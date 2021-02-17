@@ -27,5 +27,5 @@ public class DBInterface {
             "\tPRIMARY KEY(\"" + USER_id + "\" AUTOINCREMENT)\n" +
             ");";
 
-    //
+    //.
 }
