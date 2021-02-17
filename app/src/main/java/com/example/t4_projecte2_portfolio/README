@@ -1,0 +1,32 @@
+: PORTFOLIO
+
+TABLE 1 : User
+TABLE 2 : Portfolio
+TABLE 3 : Crypto
+TABLE 4 : Transaction
+
+
+Relation:
+
+    table1  1:1  table2
+    table2  1:n  table3
+
+TABLE 1 USER
+    - ID_user (PK)
+    - nickname
+    - password
+
+TABLE 2 PORTFOLIO
+    - ID_portfolio (PK)
+    - user.ID_user (FK)
+
+TABLE 3 CRYPTO
+    - ABR (PK)
+    - Name
+
+TABLE 4 TRANSACTION
+    - portfolio.ID_portfolio (FK)
+    - crypto.ABR (FK)
+    - price_buy
+    - quantity
+
