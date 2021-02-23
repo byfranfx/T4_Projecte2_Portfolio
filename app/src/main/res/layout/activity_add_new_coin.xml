@@ -4,53 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".functions.AddNewCoin">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Loggin"
+            android:text="AddNewCoin"
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nickname" />
+            android:text="ABR" />
 
         <EditText
-            android:id="@+id/editTextLogginNickname"
+            android:id="@+id/editTextAddNewCoinABR"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Password" />
+            android:text="Nom" />
 
         <EditText
-            android:id="@+id/editTextLogginPassword"
+            android:id="@+id/editTextAddNewCoinNom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName" />
 
-        <Button
-            android:id="@+id/buttonLogginSender"
+        <TextView
+            android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesión" />
+            android:text="img" />
+
+        <ImageView
+            android:id="@+id/imageViewAddNewCoinImg"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:onClick="addNewCoinSelectImg"
+            android:src="@drawable/search" />
+
+        <Button
+            android:id="@+id/buttonAddNewCoinSender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add new Crypto" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

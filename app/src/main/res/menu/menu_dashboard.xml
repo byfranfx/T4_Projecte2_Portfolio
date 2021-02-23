@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/D1"
+        android:title="Add new coin"></item>
+    <item
+        android:id="@+id/D2"
+        android:title="CryptoList"></item>
+</menu>
