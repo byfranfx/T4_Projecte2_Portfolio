@@ -17,6 +17,7 @@ public class CryptoList extends ListActivity {
 
     private ListAdapter adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
