@@ -136,7 +136,18 @@ public class AddNewCoin extends AppCompatActivity {
     // Menu Dashboard
     public void returnLoggin(View view) {
         finish();
+
+        Bundle b1 = getIntent().getExtras();
+        Bundle b2 = getIntent().getExtras();
+
+        String s1 = b1.getString("key1");
+        String s2 = b2.getString("key2");
+
         Intent i = new Intent(this, Dashboard.class);
+
+        i.putExtra("key1", s1);
+        i.putExtra("key2", s2);
+
         startActivity(i);
     }
 }

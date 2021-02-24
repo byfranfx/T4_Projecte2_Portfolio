@@ -66,8 +66,8 @@ public class DBInterface {
 
     // CreateTable.TRANSACTION
     public static final String CT_TRANSACTION = "CREATE TABLE \"" + TAULA_TRANSACTION+ "\" (\n" +
-            "\t\"" + PORTFOLIO_id + "\"\tINTEGER NOT NULL UNIQUE,\n" +
-            "\t\"" + CRYPTO_ABR + "\"\tTEXT NOT NULL UNIQUE,\n" +
+            "\t\"" + PORTFOLIO_id + "\"\tINTEGER NOT NULL,\n" +
+            "\t\"" + CRYPTO_ABR + "\"\tTEXT NOT NULL,\n" +
             "\t\"" + TRANSACTION_priceBuy + "\"\tINTEGER NOT NULL,\n" +
             "\t\"" + TRANSACTION_quantity + "\"\tINTEGER NOT NULL,\n" +
             "\tFOREIGN KEY(\"" + CRYPTO_ABR + "\") REFERENCES \"" + TAULA_CRYPTO + "\"(\"" + CRYPTO_ABR + "\"),\n" +
@@ -186,6 +186,16 @@ public class DBInterface {
         }
         c.close(); //<<<< Should always close a Cursor when done with it.
         return r;
+    }
+
+    // Metode.TRANSACTION crearPortfolio
+    public long crearTransaction(int portfolio, String ABR, int price, int quantity) {
+        ContentValues Values = new ContentValues();
+        Values.put(PORTFOLIO_id, portfolio);
+        Values.put(CRYPTO_ABR, ABR);
+        Values.put(TRANSACTION_priceBuy, price);
+        Values.put(TRANSACTION_quantity, quantity);
+        return bd.insert(TAULA_TRANSACTION, null, Values);
     }
 }
 

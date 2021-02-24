@@ -25,29 +25,67 @@ public class Dashboard extends AppCompatActivity {
         Bundle b1 = getIntent().getExtras();
         Bundle b2 = getIntent().getExtras();
 
-        String s1 =b1.getString("key1");
-        String s2 =b2.getString("key2");
+        if(b1.getString("key1") != null)
+        {
+            String s1 = b1.getString("key1");
+            t1.setText("User id: " + s1 + ".");
+        }
+
+        if(b2.getString("key2") != null)
+        {
+            String s2 = b2.getString("key2");
+            t2.setText("Portfolio id: " + s2 + ".");
+        }
+
+        /*
+        String s1 = b1.getString("key1");
+        String s2 = b2.getString("key2");
 
         t1.setText("User id: " + s1 + ".");
-        t2.setText("Portfolio id: " + s2 + ".");
+        t2.setText("Portfolio id: " + s2 + ".");*/
     }
 
     // Menu Dashboard
     public void Dashboard_AddCrypto(View view) {
         finish();
+        Bundle b1 = getIntent().getExtras();
+        Bundle b2 = getIntent().getExtras();
+
+        String s1 = b1.getString("key1");
+        String s2 = b2.getString("key2");
         Intent i = new Intent(this, AddNewCoin.class);
+        i.putExtra("key1", s1);
+        i.putExtra("key2", s2);
         startActivity(i);
     }
 
     public void Dashboard_CryptoList(View view) {
         finish();
+
+        Bundle b1 = getIntent().getExtras();
+        Bundle b2 = getIntent().getExtras();
+
+        String s1 = b1.getString("key1");
+        String s2 = b2.getString("key2");
+
         Intent i = new Intent(this, CryptoList.class);
+        i.putExtra("key1", s1);
+        i.putExtra("key2", s2);
         startActivity(i);
     }
 
     public void Dashboard_AddTransaction(View view) {
         finish();
+
+        Bundle b1 = getIntent().getExtras();
+        Bundle b2 = getIntent().getExtras();
+
+        String s1 = b1.getString("key1");
+        String s2 = b2.getString("key2");
+
         Intent i = new Intent(this, AddNewTransaction.class);
+        i.putExtra("key1", s1);
+        i.putExtra("key2", s2);
         startActivity(i);
     }
 
