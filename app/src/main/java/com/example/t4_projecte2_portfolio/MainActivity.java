@@ -43,7 +43,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String id_password = password.getText().toString();
             c = bd.logginUsuari(id_nickname, id_password);
             if (c.getCount() != 0) {
+                // recullir id user & portfolio per enviarlo al dashboard.
+
+                String sUser =  String.valueOf(bd.obtenirUserID(id_nickname));
+                String sPortfolio =  String.valueOf(bd.obtenirPortfolioID2(bd.obtenirUserID(id_nickname)));
+
+
+                //
                 Intent i = new Intent(this, Dashboard.class);
+                i.putExtra("key1",sUser);
+                i.putExtra("key2",sPortfolio);
                 startActivity(i);
             }
             bd.tanca();

@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.t4_projecte2_portfolio.functions.AddNewCoin;
+import com.example.t4_projecte2_portfolio.functions.AddNewTransaction;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -16,10 +18,22 @@ public class Dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+        TextView t1 = (TextView) findViewById(R.id.textViewDashboardUser);
+        TextView t2 = (TextView) findViewById(R.id.textViewDashboardPorfolio);
+
+        Bundle b1 = getIntent().getExtras();
+        Bundle b2 = getIntent().getExtras();
+
+        String s1 =b1.getString("key1");
+        String s2 =b2.getString("key2");
+
+        t1.setText("User id: " + s1 + ".");
+        t2.setText("Portfolio id: " + s2 + ".");
     }
 
     // Menu Dashboard
-    public void Dashboard_Add(View view) {
+    public void Dashboard_AddCrypto(View view) {
         finish();
         Intent i = new Intent(this, AddNewCoin.class);
         startActivity(i);
@@ -28,6 +42,12 @@ public class Dashboard extends AppCompatActivity {
     public void Dashboard_CryptoList(View view) {
         finish();
         Intent i = new Intent(this, CryptoList.class);
+        startActivity(i);
+    }
+
+    public void Dashboard_AddTransaction(View view) {
+        finish();
+        Intent i = new Intent(this, AddNewTransaction.class);
         startActivity(i);
     }
 
@@ -42,11 +62,15 @@ public class Dashboard extends AppCompatActivity {
         int id = opcionMenu.getItemId();
         // dAñadir Digimon
         if (id == R.id.D1) {
-            Dashboard_Add(null);
+            Dashboard_AddCrypto(null);
             return true;
         }
         if (id == R.id.D2) {
             Dashboard_CryptoList(null);
+            return true;
+        }
+        if (id == R.id.D3) {
+            Dashboard_AddTransaction(null);
             return true;
         }
         return super.onOptionsItemSelected(opcionMenu);

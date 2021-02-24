@@ -9,9 +9,11 @@ import static android.content.ContentValues.TAG;
 import static com.example.t4_projecte2_portfolio.BDD.DBInterface.BD_PORTFOLIO;
 import static com.example.t4_projecte2_portfolio.BDD.DBInterface.CT_CRYPTO;
 import static com.example.t4_projecte2_portfolio.BDD.DBInterface.CT_PORTFOLIO;
+import static com.example.t4_projecte2_portfolio.BDD.DBInterface.CT_TRANSACTION;
 import static com.example.t4_projecte2_portfolio.BDD.DBInterface.CT_USER;
 import static com.example.t4_projecte2_portfolio.BDD.DBInterface.TAULA_CRYPTO;
 import static com.example.t4_projecte2_portfolio.BDD.DBInterface.TAULA_PORTFOLIO;
+import static com.example.t4_projecte2_portfolio.BDD.DBInterface.TAULA_TRANSACTION;
 import static com.example.t4_projecte2_portfolio.BDD.DBInterface.TAULA_USER;
 import static com.example.t4_projecte2_portfolio.BDD.DBInterface.VERSIO;
 
@@ -27,6 +29,7 @@ public class AjudaDB extends SQLiteOpenHelper {
             db.execSQL(CT_USER);
             db.execSQL(CT_CRYPTO);
             db.execSQL(CT_PORTFOLIO);
+            db.execSQL(CT_TRANSACTION);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,6 +42,7 @@ public class AjudaDB extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TAULA_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TAULA_CRYPTO);
         db.execSQL("DROP TABLE IF EXISTS " + TAULA_PORTFOLIO);
+        db.execSQL("DROP TABLE IF EXISTS " + TAULA_TRANSACTION);
         onCreate(db);
     }
 }

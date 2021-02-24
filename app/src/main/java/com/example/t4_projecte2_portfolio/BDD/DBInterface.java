@@ -18,6 +18,7 @@ public class DBInterface {
     public static final String TAULA_USER = "TAULA_USER";
     public static final String TAULA_CRYPTO = "TAULA_CRYPTO";
     public static final String TAULA_PORTFOLIO = "TAULA_PORTFOLIO";
+    public static final String TAULA_TRANSACTION = "TAULA_TRANSACTION";
 
     // Columnes.USER
     public static final String USER_id = "id_user";
@@ -32,6 +33,12 @@ public class DBInterface {
     // Columnes.PORTFOLIO
     public static final String PORTFOLIO_id = "ID_portfolio";
     //public static final String USER_id = "id_user";
+
+    // Columnes.TRANSACTION
+    //public static final String PORTFOLIO_id = "ID_portfolio";
+    //public static final String CRYPTO_ABR = "ABR";
+    public static final String TRANSACTION_priceBuy = "price_buy";
+    public static final String TRANSACTION_quantity = "quantity";
 
     // CreateTable.USER
     public static final String CT_USER = "CREATE TABLE \"" + TAULA_USER + "\" (\n" +
@@ -56,6 +63,17 @@ public class DBInterface {
             "\tFOREIGN KEY(\"" + USER_id + "\") REFERENCES \"" + TAULA_USER + "\"(\"" + USER_id + "\"),\n" +
             "\tPRIMARY KEY(\"" + PORTFOLIO_id + "\" AUTOINCREMENT)\n" +
             ");";
+
+    // CreateTable.TRANSACTION
+    public static final String CT_TRANSACTION = "CREATE TABLE \"" + TAULA_TRANSACTION+ "\" (\n" +
+            "\t\"" + PORTFOLIO_id + "\"\tINTEGER NOT NULL UNIQUE,\n" +
+            "\t\"" + CRYPTO_ABR + "\"\tTEXT NOT NULL UNIQUE,\n" +
+            "\t\"" + TRANSACTION_priceBuy + "\"\tINTEGER NOT NULL,\n" +
+            "\t\"" + TRANSACTION_quantity + "\"\tINTEGER NOT NULL,\n" +
+            "\tFOREIGN KEY(\"" + CRYPTO_ABR + "\") REFERENCES \"" + TAULA_CRYPTO + "\"(\"" + CRYPTO_ABR + "\"),\n" +
+            "\tFOREIGN KEY(\"" + PORTFOLIO_id + "\") REFERENCES \"" + TAULA_PORTFOLIO + "\"(\"" + PORTFOLIO_id + "\"),\n" +
+            "\tPRIMARY KEY(\"" + TRANSACTION_priceBuy + "\")\n" +
+            ")";
 
     // Constructors parametres
     private final Context context;
@@ -143,6 +161,24 @@ public class DBInterface {
         Cursor c = bd.rawQuery("Select " + "tu." + PORTFOLIO_id +
                 " from " + TAULA_PORTFOLIO + " tu" +
                 " where " + "tu." + USER_id + " = '" + user + "'", null);
+        // Loop through the Cursor
+        while(c.moveToNext()) {
+            // r.add(c.getInt(0)); //<<<< see note
+            r = c.getInt(0);
+        }
+        c.close(); //<<<< Should always close a Cursor when done with it.
+        return r;
+    }
+
+    // Metode.PORTFOLIO obtenirPortfolioID
+    public int obtenirPortfolioID2(int user){
+        //fetch string array
+        int r = 0;
+        Cursor c = bd.rawQuery("SELECT " + TAULA_PORTFOLIO + "." + PORTFOLIO_id + "\n" +
+                "FROM " + TAULA_USER + "\n" +
+                "INNER JOIN " + TAULA_PORTFOLIO + "\n" +
+                "ON " + TAULA_USER + "." + USER_id + " = " + TAULA_PORTFOLIO + "." + USER_id + "\n" +
+                "WHERE " + TAULA_USER + "." + USER_id + " = '" + user + "'", null);
         // Loop through the Cursor
         while(c.moveToNext()) {
             // r.add(c.getInt(0)); //<<<< see note

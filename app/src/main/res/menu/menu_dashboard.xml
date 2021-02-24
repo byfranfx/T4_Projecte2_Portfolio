@@ -5,5 +5,8 @@
         android:title="Add new coin"></item>
     <item
         android:id="@+id/D2"
-        android:title="CryptoList"></item>
+        android:title="Crypto list"></item>
+    <item
+        android:id="@+id/D3"
+        android:title="Add Transaction"></item>
 </menu>
