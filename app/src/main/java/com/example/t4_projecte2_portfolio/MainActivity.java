@@ -26,6 +26,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // automatice
+        Cursor c;
+        bd = new DBInterface(getApplicationContext());
+        bd.obre();
+        String a = "root";
+        c = bd.logginUsuari(a, a);
+        if (c.getCount() != 0) {
+            Toast.makeText(getApplicationContext(), "has done!", Toast.LENGTH_SHORT).show();
+        } else {
+            if(bd.registerUser(a,a) != -1) {
+                if(bd.crearPortfolio(bd.obtenirUserID("root")) != -1) {
+                    if (bd.addNewCoin("BTC", "bitcoin", null) != -1) {
+                        if (bd.addNewCoin("ETH", "ethereum", null) != -1) {
+                            if (bd.addNewCoin("LTC", "litecoin", null) != -1) {
+                                if (bd.addNewCoin("ADA", "cardano", null) != -1) {
+                                    if (bd.addNewCoin("DOT", "polkadot", null) != -1) {
+                                        if (bd.addNewCoin("XRP", "ripple", null) != -1) {
+                                            if (bd.crearTransaction(1, "BTC", 50000,1) != -1) {
+                                                if (bd.crearTransaction(1, "ETH", 2000,10) != -1) {
+                                                    Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
+        bd.tanca();
+        //
+
         nickname = findViewById(R.id.editTextLogginNickname);
         password = findViewById(R.id.editTextLogginPassword);
 
@@ -44,11 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             c = bd.logginUsuari(id_nickname, id_password);
             if (c.getCount() != 0) {
                 // recullir id user & portfolio per enviarlo al dashboard.
-
                 String sUser =  String.valueOf(bd.obtenirUserID(id_nickname));
                 String sPortfolio =  String.valueOf(bd.obtenirPortfolioID2(bd.obtenirUserID(id_nickname)));
-
-
                 //
                 Intent i = new Intent(this, Dashboard.class);
                 i.putExtra("key1",sUser);

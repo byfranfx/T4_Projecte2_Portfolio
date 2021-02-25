@@ -42,23 +42,23 @@ public class DBInterface {
 
     // CreateTable.USER
     public static final String CT_USER = "CREATE TABLE \"" + TAULA_USER + "\" (\n" +
-            "\t\"" + USER_id + "\"\tINTEGER NOT NULL UNIQUE,\n" +
-            "\t\"" + USER_nickname + "\"\tTEXT NOT NULL UNIQUE,\n" +
+            "\t\"" + USER_id + "\"\tINTEGER NOT NULL,\n" +
+            "\t\"" + USER_nickname + "\"\tTEXT NOT NULL,\n" +
             "\t\"" + USER_password + "\"\tTEXT NOT NULL,\n" +
             "\tPRIMARY KEY(\"" + USER_id + "\" AUTOINCREMENT)\n" +
             ");";
 
     // CreateTable.CRYPTO
     public static final String CT_CRYPTO = "CREATE TABLE \"" + TAULA_CRYPTO + "\" (\n" +
-            "\t\"" + CRYPTO_ABR + "\"\tTEXT NOT NULL UNIQUE,\n" +
-            "\t\"" + CRYPTO_NAME + "\"\tTEXT NOT NULL UNIQUE,\n" +
+            "\t\"" + CRYPTO_ABR + "\"\tTEXT NOT NULL,\n" +
+            "\t\"" + CRYPTO_NAME + "\"\tTEXT NOT NULL,\n" +
             "\t\"" + CRYPTO_IMG + "\"\tBLOB,\n" +
             "\tPRIMARY KEY(\"" + CRYPTO_ABR + "\")\n" +
             ");";
 
     // CreateTable.PORTFOLIO
     public static final String CT_PORTFOLIO = "CREATE TABLE \"" + TAULA_PORTFOLIO + "\" (\n" +
-            "\t\"" + PORTFOLIO_id + "\"\tINTEGER NOT NULL UNIQUE,\n" +
+            "\t\"" + PORTFOLIO_id + "\"\tINTEGER NOT NULL,\n" +
             "\t\"" + USER_id + "\"\tINTEGER NOT NULL UNIQUE,\n" +
             "\tFOREIGN KEY(\"" + USER_id + "\") REFERENCES \"" + TAULA_USER + "\"(\"" + USER_id + "\"),\n" +
             "\tPRIMARY KEY(\"" + PORTFOLIO_id + "\" AUTOINCREMENT)\n" +
@@ -196,6 +196,34 @@ public class DBInterface {
         Values.put(TRANSACTION_priceBuy, price);
         Values.put(TRANSACTION_quantity, quantity);
         return bd.insert(TAULA_TRANSACTION, null, Values);
+    }
+
+    // Metode.TRANSACTION obtenirAllTransaction
+    public Cursor obtenirAllTransaction(int id) {
+        return bd.rawQuery("SELECT " +
+                "tt." + PORTFOLIO_id + ", \n" +
+                "tt." + CRYPTO_ABR + ", \n" +
+                "tt." + TRANSACTION_priceBuy + ", \n" +
+                "tt." + TRANSACTION_quantity + " \n" +
+                "FROM '" + TAULA_TRANSACTION + "' tt \n" +
+                "WHERE tt." + PORTFOLIO_id + " = '" + id +"'", null);
+    }
+
+    // Metode.DASHBOARD getInvestment
+    public int getInvestment(int id){
+        //fetch string array
+        int r = 0;
+        Cursor c = bd.rawQuery("SELECT \n" +
+                "SUM(tt." +TRANSACTION_priceBuy + " * tt." + TRANSACTION_quantity + ")\n" +
+                "FROM '" + TAULA_TRANSACTION + "' tt \n" +
+                "WHERE " + PORTFOLIO_id + " = '" + id + "'", null);
+        // Loop through the Cursor
+        while(c.moveToNext()) {
+            // r.add(c.getInt(0)); //<<<< see note
+            r = c.getInt(0);
+        }
+        c.close(); //<<<< Should always close a Cursor when done with it.
+        return r;
     }
 }
 
