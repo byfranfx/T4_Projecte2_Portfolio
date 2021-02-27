@@ -8,5 +8,8 @@
         android:title="Crypto list"></item>
     <item
         android:id="@+id/D3"
-        android:title="Add Transaction"></item>
+        android:title="Add ransaction"></item>
+    <item
+        android:id="@+id/D4"
+        android:title="Close session"></item>
 </menu>

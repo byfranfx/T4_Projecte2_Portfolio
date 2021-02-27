@@ -37,15 +37,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             if(bd.registerUser(a,a) != -1) {
                 if(bd.crearPortfolio(bd.obtenirUserID("root")) != -1) {
-                    if (bd.addNewCoin("BTC", "bitcoin", null) != -1) {
-                        if (bd.addNewCoin("ETH", "ethereum", null) != -1) {
-                            if (bd.addNewCoin("LTC", "litecoin", null) != -1) {
-                                if (bd.addNewCoin("ADA", "cardano", null) != -1) {
-                                    if (bd.addNewCoin("DOT", "polkadot", null) != -1) {
-                                        if (bd.addNewCoin("XRP", "ripple", null) != -1) {
-                                            if (bd.crearTransaction(1, "BTC", 50000,1) != -1) {
-                                                if (bd.crearTransaction(1, "ETH", 2000,10) != -1) {
-                                                    Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
+                    if (bd.addNewCoin("BTC", "bitcoin", null, 50000) != -1) {
+                        if (bd.addNewCoin("ETH", "ethereum", null, 5000) != -1) {
+                            if (bd.addNewCoin("LTC", "litecoin", null, 350) != -1) {
+                                if (bd.addNewCoin("ADA", "cardano", null, 1) != -1) {
+                                    if (bd.addNewCoin("DOT", "polkadot", null, 30) != -1) {
+                                        if (bd.addNewCoin("XRP", "ripple", null, 2) != -1) {
+                                            if (bd.crearTransaction(1, "BTC", 9000,1) != -1) {
+                                                if (bd.crearTransaction(1, "ETH", 1700,10) != -1) {
+                                                    if (bd.crearTransaction(1, "LTC", 30,30) != -1) {
+                                                        if (bd.crearTransaction(1, "ADA", 1,4000) != -1) {
+                                                            if (bd.crearTransaction(1, "DOT", 4,500) != -1) {
+                                                                if (bd.crearTransaction(1, "XRP", 1,80000) != -1) {
+                                                                    Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -57,10 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
-
-
-
-
         bd.tanca();
         //
 
@@ -111,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem opcionMenu) {
 
         int id = opcionMenu.getItemId();
-
         // dAñadir Digimon
         if (id == R.id.R1) {
             Main_Loggin(null);

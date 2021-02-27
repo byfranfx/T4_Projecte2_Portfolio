@@ -35,7 +35,7 @@ public class AddNewCoin extends AppCompatActivity {
 
     private int GALLERY_REQUEST_CODE = 1;
     private DBInterface bd;
-    private EditText abr, nom;
+    private EditText abr, nom, value;
     private Button AddNewCoinSender;
     private int STORAGE_PERMISSION_CODE = 23;
     private static final int PICK_IMAGE = 88;
@@ -50,11 +50,21 @@ public class AddNewCoin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_coin);
 
+        //
+        Bundle b1 = getIntent().getExtras();
+        Bundle b2 = getIntent().getExtras();
+
+        String s1 = b1.getString("key1");
+        String s2 = b2.getString("key2");
+        int foo = Integer.parseInt(s2);
+        //
+
 
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
 
         abr = findViewById(R.id.editTextAddNewCoinABR);
         nom = findViewById(R.id.editTextAddNewCoinNom);
+        value = findViewById(R.id.editTextAddNewCoinValue);
         AddNewCoinSender = (Button) findViewById(R.id.buttonAddNewCoinSender);
 
         // image
@@ -73,8 +83,9 @@ public class AddNewCoin extends AppCompatActivity {
                 bd = new DBInterface(getApplicationContext());
                 bd.obre();
                 //
-
-                if (bd.addNewCoin(abr.getText().toString(), nom.getText().toString(), bitmapmap) != -1) {
+                String svalue = value.getText().toString();
+                int value = Integer.parseInt(svalue);
+                if (bd.addNewCoin(abr.getText().toString(), nom.getText().toString(), bitmapmap, value) != -1) {
                     Toast.makeText(getApplicationContext(), "Coin agregada correctament", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "Error, la Crypto no se ha creado!", Toast.LENGTH_SHORT).show();
@@ -130,8 +141,6 @@ public class AddNewCoin extends AppCompatActivity {
             }
         }
     }
-
-
 
     // Menu Dashboard
     public void returnLoggin(View view) {

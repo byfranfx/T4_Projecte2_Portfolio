@@ -18,12 +18,14 @@
                 android:layout_width="268dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Coin:" />
+                android:text="Coin:"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="289dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="13sp" />
 
         </LinearLayout>
 
@@ -37,12 +39,14 @@
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Price Buy:" />
+                android:text="Price Buy:"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="288dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="13sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -55,12 +59,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Quantity:" />
+                android:text="Quantity:"
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="288dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="13sp" />
         </LinearLayout>
 
     </LinearLayout>

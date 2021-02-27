@@ -32,12 +32,7 @@ TABLE 4 TRANSACTION
 
 ----------
 
-        File folder= new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/demoImage.jpg/");
-        FileInputStream fis = new FileInputStream(folder);
-        byte[] image= new byte[fis.available()];
-        fis.read(image);
-        ContentValues values = new ContentValues();
-        values.put("image",image);
-        db.insert("imageTb", null,values);
-        fis.close();
-        Toast.makeText(this,"Image Fetched", Toast.LENGTH_SHORT).show();
+        ROOT PORTFOLIO
+
+        - buy total: 70.000€
+        - actual value:
