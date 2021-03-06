@@ -46,6 +46,7 @@ public class CryptoList extends ListActivity {
             map.put("other", c.getString(3));
             llista.add(map);
             c.moveToNext();
+
         }
         bd.tanca();
         adapter = new SimpleAdapter(this, llista, R.layout.activity_crypto_list,
