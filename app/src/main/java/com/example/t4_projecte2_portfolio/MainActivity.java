@@ -3,13 +3,17 @@ package com.example.t4_projecte2_portfolio;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,12 +24,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private DBInterface bd;
     private Button logginSender;
     private EditText nickname, password;
+    private String NOM_PREFENCIES = "LOGIN_PARAM";
+    private EditText user, contraseña;
+    private CheckBox recordar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        user = findViewById(R.id.editTextLogginNickname);
+        //contraseña = findViewById(R.id.editTextLogginPassword);
+        SharedPreferences pref = getSharedPreferences(NOM_PREFENCIES, MODE_PRIVATE);
+        user.setText(pref.getString("user", ""));
         // automatice
         Cursor c;
         bd = new DBInterface(getApplicationContext());
@@ -78,6 +88,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == logginSender) {
+            recordar = findViewById(R.id.recordar);
+            if(recordar.isChecked())
+            {
+                SharedPreferences settings = getSharedPreferences(NOM_PREFENCIES, MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                user = (EditText) findViewById(R.id.editTextLogginNickname);
+                editor.putString("user", user.getText().toString());
+                editor.commit();
+            }
+            else
+            {
+                SharedPreferences settings = getSharedPreferences(NOM_PREFENCIES, MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.remove("user");
+            }
             Cursor c;
             bd = new DBInterface(this.getApplicationContext());
             bd.obre();

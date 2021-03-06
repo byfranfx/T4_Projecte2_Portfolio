@@ -46,6 +46,12 @@
             android:ems="10"
             android:inputType="textPassword" />
 
+        <CheckBox
+            android:id="@+id/recordar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Redcordar"/>
+
         <Button
             android:id="@+id/buttonLogginSender"
             android:layout_width="match_parent"
