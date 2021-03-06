@@ -41,7 +41,6 @@ public class AddNewCoin extends AppCompatActivity {
     private static final int PICK_IMAGE = 88;
     private byte[] bitmapmap;
     private ImageView mImatge;
-    Uri imageUri;
     private Bitmap imatge_bitmap;
 
     @SuppressLint("WrongThread")
@@ -100,19 +99,17 @@ public class AddNewCoin extends AppCompatActivity {
 
     // abrir galeria
     private void openGallery(){
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);
+        //Cream l'Intent amb l'acció ACTION_PICK
+        Intent intent=new Intent(Intent.ACTION_PICK);
+        // Establim tipus d'imatges, per tant només s'acceptaran els tipus imagtge
+        intent.setType("image/*");
+        //Establim uns tipus de format de fotografia per assegurar-nos d'acceptar només aquest tipus de format jpg i png
+        String[] mimeTypes = {"image/jpeg", "image/png"};
+        intent.putExtra(Intent.EXTRA_MIME_TYPES,mimeTypes);
+        // Llançam l'Intent
+        startActivityForResult(intent,GALLERY_REQUEST_CODE);
     }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
-            imageUri = data.getData();
-            foto_gallery.setImageURI(imageUri);
-
-        }
-    }*/
 
     public void onActivityResult(int requestCode,int resultCode,Intent data) {
         // Result code is RESULT_OK only if the user selects an Image
