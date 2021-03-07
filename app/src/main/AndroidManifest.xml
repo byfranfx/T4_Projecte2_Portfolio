@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.T4_Projecte2_Portfolio">
-        <activity android:name=".Update"></activity>
+        <activity android:name=".CryptoListV2"></activity>
+        <activity android:name=".Update" />
         <activity android:name=".ItemList" />
         <activity android:name=".pruevaLlista" />
         <activity android:name=".functions.AddNewTransaction" />

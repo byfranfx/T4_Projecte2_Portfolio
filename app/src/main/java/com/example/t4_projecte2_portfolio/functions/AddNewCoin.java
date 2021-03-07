@@ -86,6 +86,11 @@ public class AddNewCoin extends AppCompatActivity {
                 int value = Integer.parseInt(svalue);
                 if (bd.addNewCoin(abr.getText().toString(), nom.getText().toString(), bitmapmap, value) != -1) {
                     Toast.makeText(getApplicationContext(), "Coin agregada correctament", Toast.LENGTH_SHORT).show();
+                    if (bitmapmap != null) {
+                        Toast.makeText(getApplicationContext(), "Bitmap amb dades", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Bitmap sense dades", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Toast.makeText(getApplicationContext(), "Error, la Crypto no se ha creado!", Toast.LENGTH_SHORT).show();
                 }

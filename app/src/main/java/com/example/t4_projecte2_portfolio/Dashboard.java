@@ -41,7 +41,7 @@ public class Dashboard extends AppCompatActivity {
         USD2 = (TextView) findViewById(R.id.textViewDashboardUSD2);
         USD3 = (TextView) findViewById(R.id.textViewDashboardUSD3);
 
-        llistaContactes();
+        llistaDashboard();
 
         Bundle b1 = getIntent().getExtras();
         Bundle b2 = getIntent().getExtras();
@@ -95,7 +95,7 @@ public class Dashboard extends AppCompatActivity {
 
 
     // Llista
-    public void llistaContactes() {
+    public void llistaDashboard() {
 
         Bundle b2 = getIntent().getExtras();
         String s2 = b2.getString("key2");
