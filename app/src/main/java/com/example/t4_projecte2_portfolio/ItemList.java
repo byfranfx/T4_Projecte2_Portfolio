@@ -53,13 +53,14 @@ public class ItemList extends AppCompatActivity implements View.OnClickListener 
             String sx1 = b.getString("ky1");
             t1.setText(sx1);
         }
-        if (b.getString("ky2") != null) {
+        /*if (b.getString("ky2") != null) { // actual id
             String sx2 = b.getString("ky2");
-            t2.setText("Price per coin: " + sx2 + " $");
-        }
+            //t2.setText("Price per coin: " + sx2 + " $");
+        }*/
         if (b.getString("ky3") != null) {
             String sx3 = b.getString("ky3");
-            t3.setText(sx3);
+            //t3.setText(sx3);
+            t2.setText("Price per coin: " + sx3 + " $");
         }
         if (b.getString("ky4") != null) {
             String sx4 = b.getString("ky4");
