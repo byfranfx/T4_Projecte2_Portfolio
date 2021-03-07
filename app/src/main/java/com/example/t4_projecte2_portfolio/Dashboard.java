@@ -109,15 +109,16 @@ public class Dashboard extends AppCompatActivity {
         bd = new DBInterface(this);
         bd.obre();
 
+
+        //String investment2 =  String.valueOf(bd.getActualValue(foo));
+        int calc = bd.getResultado(foo) - bd.getInvestment(foo);
+        USD2.setText("ROE: " + calc + " $");
+
         String investment1 = String.valueOf(bd.getInvestment(foo));
         USD3.setText("Invested: " + investment1 + " $");
 
         String investment3 = String.valueOf(bd.getResultado(foo));
         USD1.setText(investment3 + " $");
-
-        //String investment2 =  String.valueOf(bd.getActualValue(foo));
-        int calc = bd.getResultado(foo) - bd.getInvestment(foo);
-        USD2.setText("ROE€: " + calc + " $");
 
 
         Cursor c = bd.obtenirAllTransaction(foo);
@@ -137,6 +138,9 @@ public class Dashboard extends AppCompatActivity {
         adapter = new SimpleAdapter(this, llista, R.layout.llista,
                 new String[]{"v0", "v1", "v3", "v4"}, new int[]{R.id.textViewDashboardPorfolio, R.id.textView14,
                 R.id.textView16, R.id.textView15});
+        /*adapter = new SimpleAdapter(this, llista, R.layout.llista,
+                new String[]{"v1", "v3", "v4"}, new int[]{R.id.textView14,
+                R.id.textView16, R.id.textView15});*/
         //setListAdapter(adapter);
         listView.setAdapter(adapter);
 

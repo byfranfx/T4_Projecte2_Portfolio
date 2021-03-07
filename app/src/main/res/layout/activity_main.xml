@@ -4,59 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/w2"
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/linearLayout2"
+        android:layout_width="295dp"
+        android:layout_height="290dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="3dp">
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Loggin"
-            android:textAlignment="center" />
+            android:fontFamily="@font/carme"
+            android:gravity="center"
+            android:text="Login"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:background="#00FFFFFF" />
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nickname" />
+            android:layout_height="37dp"
+            android:fontFamily="@font/carme"
+            android:gravity="center"
+            android:text="Nickname"
+            android:textColor="#FFFFFF" />
 
         <EditText
             android:id="@+id/editTextLogginNickname"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
+            android:background="#FFFFFF"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:fontFamily="@font/carme"
+            android:inputType="textPersonName"
+            android:textColor="#1B1B1B"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#FFFFFF" />
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#00FFFFFF" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Password" />
+            android:layout_height="37dp"
+            android:fontFamily="@font/carme"
+            android:gravity="center"
+            android:text="Password"
+            android:textColor="#FFFFFF" />
 
         <EditText
             android:id="@+id/editTextLogginPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
+            android:background="#FFFFFF"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:fontFamily="@font/carme"
+            android:inputType="textPassword"
+            android:textColor="#1B1B1B" />
+
+        <View
+            android:id="@+id/divider7"
+            android:layout_width="match_parent"
+            android:layout_height="17dp"
+            android:background="#00FFFFFF" />
 
         <CheckBox
             android:id="@+id/recordar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Redcordar"/>
-
-        <Button
-            android:id="@+id/buttonLogginSender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Iniciar Sesión" />
+            android:fontFamily="@font/carme"
+            android:text="Remember nickname"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
+
+    <Button
+
+        android:id="@+id/buttonLogginSender"
+        android:layout_width="194dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="224dp"
+        android:text="Login"
+        android:textColor="#000000"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.121" />
 </androidx.constraintlayout.widget.ConstraintLayout>

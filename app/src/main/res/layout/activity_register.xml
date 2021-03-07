@@ -4,50 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/w2"
     tools:context=".Register">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="284dp"
+        android:layout_height="870dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/carme"
             android:text="Register"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:background="?android:attr/listDivider" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nickname" />
+            android:fontFamily="@font/carme"
+            android:text="Nickname"
+            android:textColor="#FFFFFF" />
+
+        <View
+            android:id="@+id/divider9"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="?android:attr/listDivider" />
 
         <EditText
             android:id="@+id/editTextRegisterNickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:fontFamily="@font/carme"
+            android:inputType="textPersonName"
+            android:textColor="#1E1E1E" />
+
+        <View
+            android:id="@+id/divider11"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="?android:attr/listDivider" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Password" />
+            android:fontFamily="@font/carme"
+            android:text="Password"
+            android:textColor="#FFFFFF" />
+
+        <View
+            android:id="@+id/divider12"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="?android:attr/listDivider" />
 
         <EditText
             android:id="@+id/editTextRegisterPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:fontFamily="@font/carme"
+            android:inputType="textPassword"
+            android:textColor="#1E1E1E" />
 
-        <Button
-            android:id="@+id/buttonRegisterSend"
+        <View
+            android:id="@+id/divider13"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Crear Usuario" />
+            android:layout_height="15dp"
+            android:background="?android:attr/listDivider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/divider21"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:attr/listDivider" />
+
+            <Button
+                android:id="@+id/buttonRegisterSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:fontFamily="@font/carme"
+                android:text="Create user"
+                android:textColor="#252525" />
+
+            <View
+                android:id="@+id/divider22"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:attr/listDivider" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

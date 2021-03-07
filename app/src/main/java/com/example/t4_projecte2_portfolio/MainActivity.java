@@ -2,10 +2,16 @@ package com.example.t4_projecte2_portfolio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +25,8 @@ import android.widget.Toast;
 
 import com.example.t4_projecte2_portfolio.BDD.DBInterface;
 
+import java.io.ByteArrayOutputStream;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DBInterface bd;
@@ -27,7 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String NOM_PREFENCIES = "LOGIN_PARAM";
     private EditText user, contraseña;
     private CheckBox recordar;
+    private Bitmap bitmap;
+    private ByteArrayOutputStream bos;
 
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +47,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //contraseña = findViewById(R.id.editTextLogginPassword);
         SharedPreferences pref = getSharedPreferences(NOM_PREFENCIES, MODE_PRIVATE);
         user.setText(pref.getString("user", ""));
+        //
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.btc);
+        bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] BTC = bos.toByteArray();
+
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.eth);
+        bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] ETH = bos.toByteArray();
+
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ltc);
+        bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] LTC = bos.toByteArray();
+
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ada);
+        bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] ADA = bos.toByteArray();
+
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.dot);
+        bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] DOT = bos.toByteArray();
+
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.xrp);
+        bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] XRP = bos.toByteArray();
+
         // automatice
         Cursor c;
         bd = new DBInterface(getApplicationContext());
@@ -47,12 +89,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             if(bd.registerUser(a,a) != -1) {
                 if(bd.crearPortfolio(bd.obtenirUserID("root")) != -1) {
-                    if (bd.addNewCoin("BTC", "bitcoin", null, 50000) != -1) {
-                        if (bd.addNewCoin("ETH", "ethereum", null, 5000) != -1) {
-                            if (bd.addNewCoin("LTC", "litecoin", null, 350) != -1) {
-                                if (bd.addNewCoin("ADA", "cardano", null, 1) != -1) {
-                                    if (bd.addNewCoin("DOT", "polkadot", null, 30) != -1) {
-                                        if (bd.addNewCoin("XRP", "ripple", null, 2) != -1) {
+                    if (bd.addNewCoin("BTC", "bitcoin", BTC, 50000) != -1) {
+                        if (bd.addNewCoin("ETH", "ethereum", ETH, 5000) != -1) {
+                            if (bd.addNewCoin("LTC", "litecoin", LTC, 350) != -1) {
+                                if (bd.addNewCoin("ADA", "cardano", ADA, 1) != -1) {
+                                    if (bd.addNewCoin("DOT", "polkadot", DOT, 30) != -1) {
+                                        if (bd.addNewCoin("XRP", "ripple", XRP, 2) != -1) {
                                             if (bd.crearTransaction(1, "BTC", 9000,1) != -1) {
                                                 if (bd.crearTransaction(1, "ETH", 1700,10) != -1) {
                                                     if (bd.crearTransaction(1, "LTC", 30,30) != -1) {

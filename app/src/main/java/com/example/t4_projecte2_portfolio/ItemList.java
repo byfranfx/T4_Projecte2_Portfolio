@@ -59,11 +59,11 @@ public class ItemList extends AppCompatActivity implements View.OnClickListener 
         }
         if (b.getString("ky3") != null) {
             String sx3 = b.getString("ky3");
-            t3.setText("    " + sx3);
+            t3.setText(sx3);
         }
         if (b.getString("ky4") != null) {
             String sx4 = b.getString("ky4");
-            t3.setText("    " + sx4);
+            t3.setText(sx4);
         }
 
         update = (Button) findViewById(R.id.buttonItemListUpdateSender);

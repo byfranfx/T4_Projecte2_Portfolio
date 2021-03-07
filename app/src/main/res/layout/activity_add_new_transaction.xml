@@ -24,11 +24,6 @@
             android:layout_height="wrap_content"
             android:text="Currenci abrebiation" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <EditText
             android:id="@+id/editTextAddNewTransactionABR"
             android:layout_width="match_parent"

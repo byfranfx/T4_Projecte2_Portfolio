@@ -43,8 +43,8 @@ public class AddNewTransaction extends AppCompatActivity implements AdapterView.
         priceBuy = findViewById(R.id.editTextAddNewTransactionPriceBuy);
         quantity = findViewById(R.id.editTextAddNewTransactionQuantity);
 
-        spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setOnItemSelectedListener(this);
+        //spinner = (Spinner) findViewById(R.id.spinner);
+        //spinner.setOnItemSelectedListener(this);
         //loadSpinnerData();
 
         AddNewTransactionSender = (Button) findViewById(R.id.buttonAddNewTransactionSender);
