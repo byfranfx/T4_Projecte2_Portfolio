@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         user = findViewById(R.id.editTextLogginNickname);
+        contraseña = findViewById(R.id.editTextLogginPassword);
         //contraseña = findViewById(R.id.editTextLogginPassword);
         SharedPreferences pref = getSharedPreferences(NOM_PREFENCIES, MODE_PRIVATE);
         user.setText(pref.getString("user", ""));
@@ -160,6 +161,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i.putExtra("key1",sUser);
                 i.putExtra("key2",sPortfolio);
                 startActivity(i);
+            } else {
+                Toast.makeText(getApplicationContext(), "Error, Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
             }
             bd.tanca();
         }

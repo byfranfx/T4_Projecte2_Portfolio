@@ -30,23 +30,29 @@ public class Register extends AppCompatActivity {
         registerSender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bd = new DBInterface(getApplicationContext());
-                bd.obre();
-                // insertar Usuari
-                if (bd.registerUser(nickname.getText().toString(), password.getText().toString()) != -1) {
-                    Toast.makeText(getApplicationContext(), "Usuari Creat correctament " + bd.obtenirUserID(nickname.getText().toString()), Toast.LENGTH_SHORT).show();
-                    // insertar Portfolio
-                    if (bd.crearPortfolio(bd.obtenirUserID(nickname.getText().toString())) != -1) {
-                        Toast.makeText(getApplicationContext(), "Portfolio Creat correctament " + bd.obtenirPortfolioID(bd.obtenirUserID(nickname.getText().toString())), Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Error, el portfolio no se ha creado!", Toast.LENGTH_SHORT).show();
-                    }
+
+                if (nickname.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Error, el campo nickname o contraseña esta vacio!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Error, el usuario no se ha creado!", Toast.LENGTH_SHORT).show();
+
+                    bd = new DBInterface(getApplicationContext());
+                    bd.obre();
+                    // insertar Usuari
+                    if (bd.registerUser(nickname.getText().toString(), password.getText().toString()) != -1) {
+                        Toast.makeText(getApplicationContext(), "Usuari Creat correctament " + bd.obtenirUserID(nickname.getText().toString()), Toast.LENGTH_SHORT).show();
+                        // insertar Portfolio
+                        if (bd.crearPortfolio(bd.obtenirUserID(nickname.getText().toString())) != -1) {
+                            Toast.makeText(getApplicationContext(), "Portfolio Creat correctament " + bd.obtenirPortfolioID(bd.obtenirUserID(nickname.getText().toString())), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Error, el portfolio no se ha creado!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Error, el usuario no se ha creado!", Toast.LENGTH_SHORT).show();
+                    }
+                    bd.tanca();
+                    //finish();
+                    returnLoggin(null);
                 }
-                bd.tanca();
-                //finish();
-                returnLoggin(null);
             }
         });
     }
