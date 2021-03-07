@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:textColor="#202020"
             android:textColorHint="#C1A7A7"
             android:textSize="16sp" />
@@ -157,7 +157,7 @@
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:textColor="#202020"
             android:textColorHint="#C1A7A7"
             android:textSize="16sp" />

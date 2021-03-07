@@ -34,7 +34,6 @@ public class Register extends AppCompatActivity {
                 if (nickname.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Error, el campo nickname o contraseña esta vacio!", Toast.LENGTH_SHORT).show();
                 } else {
-
                     bd = new DBInterface(getApplicationContext());
                     bd.obre();
                     // insertar Usuari

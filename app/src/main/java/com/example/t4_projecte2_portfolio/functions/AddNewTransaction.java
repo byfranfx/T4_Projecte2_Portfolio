@@ -22,7 +22,7 @@ import java.util.List;
 public class AddNewTransaction extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private EditText abr, priceBuy, quantity;
-    private Spinner spinner;
+    //private Spinner spinner;
     private DBInterface bd;
     private Button AddNewTransactionSender;
 
@@ -51,25 +51,34 @@ public class AddNewTransaction extends AppCompatActivity implements AdapterView.
         AddNewTransactionSender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String x0 = abr.getText().toString();
-                String x1 = priceBuy.getText().toString();
-                String x2 = quantity.getText().toString();
-                int i1 = Integer.parseInt(x1);
-                int i2 = Integer.parseInt(x2);
-                bd = new DBInterface(getApplicationContext());
-                bd.obre();
-                // insertar Usuari
-                if (bd.crearTransaction(foo, x0, i1, i2) != -1) {
-                    Toast.makeText(getApplicationContext(), "La transaccion se ha realizado correctamente. " +
-                            "\n Porttfolio_id: " + foo +
-                            "\n price_buy: " + i1 +
-                            "\n quantity: " + i2, Toast.LENGTH_SHORT).show();
+
+                if (abr.getText().toString().isEmpty() || priceBuy.getText().toString().isEmpty() || quantity.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Error, alguno de los campos esta vacio!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Error, la transaccion no se ha realizado!", Toast.LENGTH_SHORT).show();
+
+                    String x0 = abr.getText().toString();
+                    String x1 = priceBuy.getText().toString();
+                    String x2 = quantity.getText().toString();
+
+                    int i1 = Integer.parseInt(x1);
+                    int i2 = Integer.parseInt(x2);
+                    bd = new DBInterface(getApplicationContext());
+                    bd.obre();
+                    // insertar Usuari
+                    if (bd.crearTransaction(foo, x0, i1, i2) != -1) {
+                        Toast.makeText(getApplicationContext(), "La transaccion se ha realizado correctamente. " +
+                                "\n Porttfolio_id: " + foo +
+                                "\n price_buy: " + i1 +
+                                "\n quantity: " + i2, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Error, la transaccion no se ha realizado!", Toast.LENGTH_SHORT).show();
+                    }
+                    bd.tanca();
+                    //finish();
+                    returnLoggin(null);
                 }
-                bd.tanca();
-                //finish();
-                returnLoggin(null);
+
+
             }
         });
     }
@@ -90,7 +99,7 @@ public class AddNewTransaction extends AppCompatActivity implements AdapterView.
         startActivity(i);
     }
 
-    private void loadSpinnerData() {
+    /*private void loadSpinnerData() {
         bd = new DBInterface(getApplicationContext());
 
         List<String> labels = bd.getAllLabels();
@@ -101,8 +110,8 @@ public class AddNewTransaction extends AppCompatActivity implements AdapterView.
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
-    }
+        //spinner.setAdapter(dataAdapter);
+    }*/
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
