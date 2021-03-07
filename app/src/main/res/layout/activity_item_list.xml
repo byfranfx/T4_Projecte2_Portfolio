@@ -23,6 +23,12 @@
             android:textAlignment="center"
             android:textColor="#FFFFFF" />
 
+        <View
+            android:id="@+id/divider23"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="?android:attr/listDivider" />
+
         <TextView
             android:id="@+id/textViewItemList1"
             android:layout_width="match_parent"
